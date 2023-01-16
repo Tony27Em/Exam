@@ -8,7 +8,7 @@
 .container {
   width: 1440px;
   margin: auto;
-  background-color: #f7f7f7;
+  background-color: brown;
 }
 .container-banner {
   width: 100%;
@@ -67,7 +67,7 @@
   font-size: 18px;
   font-weight: initial;
   line-height: 18px;
-  color: white;
+  color: #ffffff;
 }
 
 .nav-line-2 {
@@ -103,7 +103,7 @@
   background-color: #000000;
 }
 .nav-line-2 .requests > div:first-of-type > a {
-  color: white;
+  color: #ffffff;
 }
 .nav-line-2 .change-theme-color {
   width: 84px;
@@ -141,12 +141,18 @@
 
 .first-section {
   width: 100%;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 0;
 }
 
 .first-section-left {
-  width: 320px;
-  padding: 12px;
-  background-color: white;
+  width: 22.75%;
+  padding: 12px 12px 14px 12px;
+  background-color: #ffffff;
   border-radius: 10px;
 }
 .first-section-left-img {
@@ -156,6 +162,7 @@
   border-radius: 10px;
 }
 .first-section-left-header {
+  margin: 4px 0 12px 0;
   font-size: 18px;
   font-weight: 800;
   line-height: 110%;
@@ -197,5 +204,142 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  gap: 0;
+}
+
+.first-section-middle {
+  width: 52.3%;
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.first-section-middle-img {
+  width: 100%;
+  height: 364px;
+  background-color: #9C9CFF;
+  border-radius: 10px;
+}
+.first-section-middle-header {
+  width: 90%;
+  margin-top: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 110%;
+  color: #000000;
+}
+
+.first-section-right {
+  width: 22.75%;
+  padding: 12px 8px 0 16px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0;
+  height: 496px;
+}
+.first-section-right-header {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 120%;
+  color: #000000;
+}
+.first-section-right-text {
+  overflow-y: scroll;
+}
+.first-section-right-text > p {
+  margin-bottom: 32px;
+  padding-top: 12px;
+  margin-right: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  border-top: 1px solid #E3E3E3;
+}
+.first-section-right-text > p > a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 120%;
+  color: #000000;
+}
+.first-section-right-text > p > a > span {
+  color: #777777;
+}
+.first-section-right-text::-webkit-scrollbar {
+  width: 4px;
+  height: 100%;
+  background-color: transparent;
+}
+.first-section-right-text::-webkit-scrollbar-thumb {
+  height: 50px;
+  border-radius: 40px;
+  background-color: #9C9CFF;
+}
+
+.second-section {
+  width: 1408px;
+  margin: 0 auto 24px auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+}
+.second-section-anyblock {
+  width: 32.67%;
+}
+.second-section-anyblock-img {
+  width: 100%;
+  height: 360px;
+  background-color: #EA2E34;
+  border-radius: 10px;
+}
+.second-section-anyblock-content {
+  padding: 16px;
+  background-color: #000000;
+  border-radius: 10px;
+}
+.second-section-anyblock-content-header {
+  width: 86%;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 110%;
+  color: #ffffff;
+}
+.second-section-anyblock-content-text {
+  width: 88%;
+  margin: 48px 0 16px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 120%;
+  color: #ffffff;
+  letter-spacing: -0.019em;
+}
+.second-section-anyblock-content-datetext {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 140%;
+  color: #E3E3E3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: initial;
   gap: 0;
 }

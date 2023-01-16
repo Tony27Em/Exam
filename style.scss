@@ -12,6 +12,8 @@ $side-indent: 32px;
 $main-width: $global-width - $side-indent;
 
 $bg-color-banner: #93FF82;
+$color-white: #ffffff;
+$color-black: #000000;
 
 
 // mixin
@@ -35,7 +37,8 @@ $bg-color-banner: #93FF82;
 .container {
     width: $global-width;
     margin: auto;
-    background-color: #f7f7f7;
+    // background-color: #f7f7f7;
+    background-color: brown;
 
     &-banner {
         width: 100%;
@@ -44,7 +47,7 @@ $bg-color-banner: #93FF82;
         background-color: $bg-color-banner;
         text-align: center;
         @include flex-properties(row, center, center, 0);
-        @include text-style(48px, 500, 58px, #000000);
+        @include text-style(48px, 500, 58px, $color-black);
     }
 }
 
@@ -64,7 +67,7 @@ $bg-color-banner: #93FF82;
 .nav-line-1 {
     width: 100%;
     padding: 12px 24px;
-    background-color: #000000;
+    background-color: $color-black;
     border-radius: 10px;
     @include flex-properties(row, center, space-between, 0);
 
@@ -79,7 +82,7 @@ $bg-color-banner: #93FF82;
         border: 0;
         border-radius: 10px;
         outline: none;     
-        @include text-style(18px, initial, 18px, white);   
+        @include text-style(18px, initial, 18px, $color-white);   
     }
 }
 
@@ -103,10 +106,10 @@ $bg-color-banner: #93FF82;
 
         & > div:first-of-type {
             border: 0;
-            background-color: #000000;
+            background-color: $color-black;
 
             & > a {
-                color: white;
+                color: $color-white;
             }
         }
     }
@@ -116,7 +119,7 @@ $bg-color-banner: #93FF82;
         height: 48px;
         padding: 4px;
         border-radius: 32px;
-        background-color: #000000;
+        background-color: $color-black;
         background-image: url(../images/dark-theme-icon.svg), url(../images/light-theme-icon.svg);
         background-repeat: no-repeat;
         background-position: right 12px center, left 12px center;
@@ -141,7 +144,7 @@ $bg-color-banner: #93FF82;
 }
 
 
-// MAIN. SECTION
+// MAIN. SECTION #1
 .main {
     width: $main-width;
     margin: auto;    
@@ -149,12 +152,14 @@ $bg-color-banner: #93FF82;
 
 .first-section {
     width: 100%;
+    margin-bottom: 32px;
+    @include flex-properties(row, stretch, space-between, 0);    
 }
 
 .first-section-left {
-    width: 320px;
-    padding: 12px;
-    background-color: white;
+    width: 22.75%;
+    padding: 12px 12px 14px 12px;
+    background-color: $color-white;
     border-radius: 10px;
 
     &-img {
@@ -165,7 +170,8 @@ $bg-color-banner: #93FF82;
     }
 
     &-header {
-        @include text-style(18px, 800, 110%, #000000);
+        margin: 4px 0 12px 0;
+        @include text-style(18px, 800, 110%, $color-black);
     }
 
     &-text {
@@ -193,9 +199,137 @@ $bg-color-banner: #93FF82;
                 border-radius: 8px;
                 background-color: #93FF82;
                 text-decoration: none;
-                @include text-style(14px, 500, 120%, #000000);
+                @include text-style(14px, 500, 120%, $color-black);
                 @include flex-properties(row, center, center, 0);
+            }            
+        }
+    }
+}
+
+.first-section-middle {
+    width: 52.3%;
+    padding: 16px;
+    background-color: $color-white;
+    border-radius: 10px;
+
+    &-img {
+        width: 100%;
+        height: 364px;
+        background-color: #9C9CFF;
+        border-radius: 10px;        
+    }
+
+    &-header {
+        width: 90%;
+        margin-top: 16px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        @include text-style(36px, 800, 110%, $color-black);
+    }
+}
+
+.first-section-right {
+    width: 22.75%;
+    padding: 12px 8px 0 16px;
+    background-color: $color-white;
+    border-radius: 10px;
+    @include flex-properties(column, flex-start, flex-start, 0);
+    height: 496px;    
+
+    &-header {
+        margin-bottom: 12px;
+        @include text-style(16px, 700, 120%, $color-black);
+    }
+
+    &-text {  
+        overflow-y: scroll;
+        
+        & > p {
+            margin-bottom: 32px;
+            padding-top: 12px;
+            margin-right: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            border-top: 1px solid #E3E3E3;
+            
+            & > a {
+                text-decoration: none;
+                @include text-style(18px, 600, 120%, $color-black);
+                
+                & > span {
+                    color: #777777;
+                }
+            }
+        }
+
+
+        &::-webkit-scrollbar {
+            width: 4px;
+            height: 100%;
+            background-color: transparent;
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            height: 50px;
+            border-radius: 40px;
+            background-color: #9C9CFF;
+        }  
+
+        
+    }  
+}
+
+
+// MAIN. SECTION #2
+.second-section {
+    width: $main-width;
+    margin: 0 auto 24px auto;
+    @include flex-properties(row, center, space-between, 0);
+
+    &-anyblock {
+        width: 32.67%;
+
+        &-img {
+            width: 100%;
+            height: 360px;
+            background-color: #EA2E34;
+            border-radius: 10px;
+        }
+
+        &-content {
+            padding: 16px;
+            background-color: #000000;
+            border-radius: 10px;
+
+            &-header {
+                width: 86%;
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                @include text-style(36px, 800, 110%, #ffffff);
+            }
+
+            &-text {
+                width: 88%;
+                margin: 48px 0 16px 0;
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                @include text-style(18px, 500, 120%, #ffffff);
+                letter-spacing: -0.019em;
+            }
+
+            &-datetext {
+                @include text-style(12px, 400, 140%, #E3E3E3);
+                @include flex-properties(row, center, initial, 0);
             }
         }
     }
+    
 }
