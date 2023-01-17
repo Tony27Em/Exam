@@ -33,34 +33,37 @@ $color-black: #000000;
 }
 
 
-// Container
+// CONTAINER
 .container {
     width: $global-width;
     margin: auto;
-    // background-color: #f7f7f7;
-    background-color: brown;
-
-    &-banner {
-        width: 100%;
-        height: 300px;
-        border-radius: 10px;
-        background-color: $bg-color-banner;
-        text-align: center;
-        @include flex-properties(row, center, center, 0);
-        @include text-style(48px, 500, 58px, $color-black);
-    }
+    background-color: #f7f7f7;
 }
 
 
 // HEADER/NAV
 .header {
-    width: $main-width;
+    width: $global-width;
     margin: auto;
+
+    &-banner {
+        width: 100%;
+        height: 323px;
+        border-radius: 10px;
+        background-color: $bg-color-banner;
+        text-align: center;
+        @include flex-properties(column, center, center, 0);
+        @include text-style(48px, 600, 50px, $color-black);
+
+        & > span {
+            @include text-style(24px, 600, 24px, $color-black);
+        }
+    }
 }
 
 .nav {
-    width: 100%;    
-    margin: 32px 0;
+    width: $main-width;
+    margin: 32px auto;
     @include flex-properties(column, center, center, 16px);    
 }
 
@@ -69,7 +72,12 @@ $color-black: #000000;
     padding: 12px 24px;
     background-color: $color-black;
     border-radius: 10px;
-    @include flex-properties(row, center, space-between, 0);
+    display: grid;
+    grid-template-columns: 3.5fr 4.36fr 1fr 1.37fr;
+
+    & > img {
+        align-self: center;
+    }
 
     & #search-panel {
         width: 580px;
@@ -78,12 +86,55 @@ $color-black: #000000;
         background-color: #302C2C;
         background-image: url(../images/search-icon.svg);
         background-repeat: no-repeat;
-        background-position: right 18px center;
+        background-position: right 16px center;
         border: 0;
         border-radius: 10px;
         outline: none;     
         @include text-style(18px, initial, 18px, $color-white);   
     }
+
+    .select {
+        position: relative;
+        justify-self: end;
+        align-self: center;
+        padding-left: 27px;
+        background-color: transparent;
+        background-image: url(../images/select-arrow.svg);
+        background-repeat: no-repeat;
+        background-position: center left;
+        background-size: contain;
+        cursor: pointer;
+
+        &-header {
+            @include text-style(18px, 400, 120%, #ffffff);
+        }
+
+        &-options {
+            width: 100%;
+            margin-left: 14px;
+            display: none;
+            position: absolute;
+            left: 0;
+            background-color: #302C2C;
+            border-radius: 10px;
+            
+            & > a {
+                width: 100%;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 10px;
+                @include text-style(18px, 400, 200%, #ffffff);
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+        
+        &:hover > .select-options {
+            @include flex-properties(column, center, center, 0);            
+        }
+    }    
 }
 
 .nav-line-2 {
@@ -91,10 +142,11 @@ $color-black: #000000;
     @include flex-properties(row, center, space-between, 0);
 
     & .requests {
-        @include flex-properties(row, center, flex-start, 16px);
+        @include flex-properties(row, center, flex-start, 15px);
+
         & > div {
             width: max-content;
-            padding: 12px 20px;
+            padding: 10px 19px;
             border: 2px solid #808080;
             border-radius: 8px;
     
@@ -105,6 +157,7 @@ $color-black: #000000;
         }
 
         & > div:first-of-type {
+            padding: 12px 20.5px;
             border: 0;
             background-color: $color-black;
 
@@ -170,8 +223,9 @@ $color-black: #000000;
     }
 
     &-header {
-        margin: 4px 0 12px 0;
-        @include text-style(18px, 800, 110%, $color-black);
+        margin: 5px 0 11px 0;
+        padding-left: 4px;
+        @include text-style(18px, 900, 110%, $color-black);
     }
 
     &-text {
@@ -182,12 +236,13 @@ $color-black: #000000;
             display: grid;
             grid-template-columns: min-content auto;
             grid-template-rows: repeat(2, min-content);
-            column-gap: 16px;
+            column-gap: 12px;
             
             & > div {
                 grid-area: 1/1/3/2;
                 width: 72px;
                 height: 72px;
+                margin-left: 4px;
                 background-color: #E3E3E3;
                 border-radius: 10px;
             }
@@ -196,12 +251,17 @@ $color-black: #000000;
                 width: 98px;
                 height: 25px;
                 border: 1px solid #000000;
-                border-radius: 8px;
+                border-radius: 6px;
                 background-color: #93FF82;
                 text-decoration: none;
                 @include text-style(14px, 500, 120%, $color-black);
                 @include flex-properties(row, center, center, 0);
-            }            
+            }      
+            
+            & > span {
+                padding: 4px 0 0 4px;
+                @include text-style(18px, 400, 120%, $color-black);
+            }
         }
     }
 }
@@ -232,7 +292,7 @@ $color-black: #000000;
 
 .first-section-right {
     width: 22.75%;
-    padding: 12px 8px 0 16px;
+    padding: 12px 8px 0 17px;
     background-color: $color-white;
     border-radius: 10px;
     @include flex-properties(column, flex-start, flex-start, 0);
@@ -247,7 +307,7 @@ $color-black: #000000;
         overflow-y: scroll;
         
         & > p {
-            margin-bottom: 32px;
+            margin-bottom: 34px;
             padding-top: 12px;
             margin-right: 8px;
             display: -webkit-box;
@@ -291,7 +351,7 @@ $color-black: #000000;
     @include flex-properties(row, center, space-between, 0);
 
     &-anyblock {
-        width: 32.67%;
+        width: calc((#{$main-width} - 28px)/3);
 
         &-img {
             width: 100%;
@@ -301,7 +361,7 @@ $color-black: #000000;
         }
 
         &-content {
-            padding: 16px;
+            padding: 18px 16px 16px 16px;
             background-color: #000000;
             border-radius: 10px;
 
@@ -337,7 +397,7 @@ $color-black: #000000;
 // MAIN. SECTION #3
 .third-section {
     width: $main-width;
-    margin: 0 auto 48px auto;
+    margin: 0 auto 46px auto;
     @include flex-properties(row, flex-start, space-between, 0);
     flex-wrap: wrap;
 
@@ -365,7 +425,7 @@ $color-black: #000000;
                     }
 
                     &-text {
-                        margin: 48px 0 16px 0;
+                        margin: 50px 0 17px 0;
                         @include text-style(18px, 500, 120%, $color-black);
                         letter-spacing: -0.019em;
                     }
@@ -396,8 +456,12 @@ $color-black: #000000;
         background-color: #93FF82;
         border-radius: 10px;
         text-align: center;
-        @include flex-properties(row, center, center, 0);
-        @include text-style(48px, 500, 58px, #000000);
+        @include flex-properties(column, center, center, 0);
+        @include text-style(48px, 600, 50px, #000000);
+
+        & > span {
+            @include text-style(25px, 600, 24px, #000000);
+        }
     }
 }
 
@@ -415,8 +479,12 @@ $color-black: #000000;
         background-color: #93FF82;
         border-radius: 10px;
         text-align: center;
-        @include text-style(48px, 500, 58px, #000000);
-        @include flex-properties(row, center, center, 0);
+        @include flex-properties(column, center, center, 0);
+        @include text-style(48px, 600, 50px, #000000);
+
+        & > span {
+            @include text-style(25px, 600, 24px, #000000);
+        }
     }
 
     &-anyblock {
@@ -424,8 +492,8 @@ $color-black: #000000;
         @include flex-properties(row, stretch, space-between, 0);
         
         &-content {
-            width: 32.67%;
-            padding: 24px 16px 40px 24px;
+            width: 32.69%;
+            padding: 24px 16px 32px 24px;
             background-color: #302C2C;
             border-radius: 10px;   
             display: grid;
@@ -443,7 +511,7 @@ $color-black: #000000;
             &-text {
                 width: 75%;
                 grid-area: 2/1/3/3;
-                margin-top: 50px;
+                margin-top: 59px;
                 display: -webkit-box;
                 -webkit-line-clamp: 3;
                 -webkit-box-orient: vertical;
@@ -456,7 +524,7 @@ $color-black: #000000;
                 align-self: baseline;
                 transform: translate(100%) rotate(90deg);
                 transform-origin: left top;
-                @include text-style(12px, 400, 140%, $color-white);
+                @include text-style(11px, 400, 140%, $color-white);
                 @include flex-properties(row, center, initial, 0);
             }
         }
@@ -480,13 +548,13 @@ $color-black: #000000;
 .fifth-section {
     width: $main-width;
     margin: 0 auto 32px auto;
-    @include flex-properties(column, center, center, 24px);
+    @include flex-properties(column, center, center, 23px);
 
     &-anyblock {
         @include flex-properties(row, stretch, space-between, 0);
 
         &-img {
-            width: 14.2%;
+            width: 14.3%;
             height: 140px;
             background-color: #93FF82;
             border-radius: 10px;
@@ -503,7 +571,7 @@ $color-black: #000000;
         }
 
         &-text {
-            width: 81.4%;
+            width: 81.3%;
             padding: 24px 66px 24px 36px;
             background-color: #E3E3E3;
             border-radius: 10px;
@@ -521,9 +589,13 @@ $color-black: #000000;
 }
 
 // SECTION #6 (same SECTION #3 except last extra block. If necessary change 'third' to 'sixth')
+.sixth-section-main {
+    gap: 24px;
+}
+
 .more-result {
     width: 100%;
-    margin: 24px auto -22px auto;
+    margin: 22px auto -22px auto;
     background-color: #000000;
     border-radius: 10px;
     @include flex-properties(row, center, center, 0);
@@ -538,7 +610,7 @@ $color-black: #000000;
 
 
 // FOOTER
-// SECTION #1
+// FOOTER. SECTION #1
 .footer {
     width: $main-width;
     margin: 0 auto 16px auto;
@@ -553,11 +625,11 @@ $color-black: #000000;
         background-color: #FFC7F3;
         border-radius: 10px;
         padding: 48px 0;
-        @include flex-properties(column, center, center, 32px);
+        @include flex-properties(column, center, center, 35px);
 
         &-text {
             text-align: center;
-            @include text-style(72px, 600, 100%, #000000);
+            @include text-style(70px, 600, 102%, #000000);
         }
     }
 
@@ -580,7 +652,7 @@ $color-black: #000000;
         }
 
         & > button {
-            width: 38.23%;
+            width: 38.236%;
             height: 140px;
             background-color: #EA2E34;
             border: 0;
@@ -592,7 +664,7 @@ $color-black: #000000;
 }
 
 
-// SECTION #2
+// FOOTER. SECTION #2
 .info-content {
     width: 100%;
     display: grid;
@@ -606,8 +678,13 @@ $color-black: #000000;
         grid-area: rc-11;
         padding: 24px;
         background-color: #000000; 
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
-        @include flex-properties(column, flex-start, center, 136px);
+        @include flex-properties(column, flex-start, center, 138px);
+
+        & > img {
+            width: 60%;
+        }
 
         & > p {
             padding-right: 20px;
@@ -619,6 +696,7 @@ $color-black: #000000;
         grid-area: rc-12;
         padding: 16px;
         background-color: #000000;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -653,8 +731,9 @@ $color-black: #000000;
         grid-area: rc-21;
         padding: 16px;
         background-color: #000000;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
-        @include flex-properties(column, flex-start, center, 122px);
+        @include flex-properties(column, flex-start, center, 121px);
 
         & > h3 {
             width: 45%;
@@ -676,6 +755,7 @@ $color-black: #000000;
     &-agreement {
         grid-area: rc-23;
         background-color: #000000;
+        box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
         text-align: center;
         writing-mode: vertical-rl;
@@ -692,37 +772,38 @@ $color-black: #000000;
 
         & > img {
             position: absolute;
+            cursor: pointer;
         }
 
         & > img:nth-of-type(1) {
-            top: 24px;
+            top: 25px;
             left: 45px;
         }
 
         & > img:nth-of-type(2) {
-            top: 59px;
+            top: 60px;
             right: 42px;
         }
 
         & > img:nth-of-type(3) {
-            top: 139px;
+            top: 140px;
             left: 65px;
         }
 
         & > img:nth-of-type(4) {
             right: 63px;
-            bottom: 124px;
+            bottom: 123px;
         }
 
         & > img:nth-of-type(5) {
             left: 92px;
-            bottom: 25px;
+            bottom: 23px;
         }
     }
 }
 
 
-// SECTION #3
+// FOOTER. SECTION #3
 .big-footer-logo {
     margin-top: 60px;
 }
