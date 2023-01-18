@@ -32,6 +32,14 @@ $color-black: #000000;
 }
 
 
+// CONTAINER
+.container {
+    width: $global-width;
+    margin: auto;
+    background-color: #f7f7f7;
+}
+
+
 // HEADER/NAV
 .header {
     width: $global-width;
@@ -190,24 +198,17 @@ $color-black: #000000;
 
 // MAIN. SECTION #1
 .main {
-    width: $main-width;
-    margin: auto;
-
+    width: $global-width;
     background-color: lightblue;
 }
 
 .first-section {
-    width: 100%;
-    padding: 16px;
+    width: $main-width;
+    margin: 0 auto 54px auto;
     display: grid;
-
-    position: relative;
-    border: 1px solid black;
-
-    grid-template-columns: 24px 860px 460px;
+    grid-template-columns: auto 61.1% 32.75%;
     grid-template-rows: repeat(11, auto);
-    column-gap: 16px;
-
+    gap: 16px;
     grid-template-areas: 
             "soc header ."
             "soc date ."
@@ -217,17 +218,19 @@ $color-black: #000000;
             "soc gallery banner"
             "soc sometext-2 banner"
             "soc someheader-1 someheader-1"
+            "soc sometext-3 ."
             "soc img-2 someheader-2"
             "soc review ."
-            "soc sometext-3 bug";
+            "soc sometext-4 bug";
 
     &-soc {
-        grid-area: soc;        
-
+        grid-area: soc; 
+        
         & > .sticky {
             position: sticky;
             top: 50px;
-            @include flex-properties(column, center, center, 19px);
+            margin: 50px 0;       
+            @include flex-properties(column, flex-end, center, 19px);
 
             & > p {
                 writing-mode: vertical-lr;
@@ -264,24 +267,30 @@ $color-black: #000000;
         grid-area: img-1;
         width: 100%;
         height: 482px;
+        margin-bottom: 9px;
         background-color: #e3e3e3;
         border-radius: 10px;
     }
 
     &-news {
         grid-area: news;
+        align-self: baseline;
         padding: 16px;
         background-color: #ffffff;
         border-radius: 10px;
 
+        & > img {
+            border-radius: 12px;
+        }
+
         &-header {
-            margin: 16px 0;
+            margin: 13px 0;
             @include text-style(24px, 700, 110%, #000000);
         }
 
         &-anyblock {
             display: grid;
-            padding: 16px 0;
+            padding: 16px 0 15px 0;
             grid-template-columns: auto auto;
             grid-template-rows: repeat(2, auto);
             border-top: 1px solid #e3e3e3;
@@ -310,43 +319,62 @@ $color-black: #000000;
 
     &-sometext-1 {
         grid-area: sometext-1;
+        width: 95.34%;
+        margin-bottom: 24px;
+        display: inline-block;
         justify-self: end;
+        @include flex-properties(column, flex-end, center, 40px);
 
         & > p {
-            width: 80%;
-            @include text-style(18px, 500, 140%, #000000);
+            @include text-style(18px, 500, 123%, #000000);
         }
 
         & > p:first-of-type {
-            width: 80%;            
+            display: inline-block;
+            width: 84%;            
         }
 
-        & > p:nth-last-of-type(2) {
-            width: 90%;
+        & > p:nth-of-type(2) {
             font-style: italic;
-            padding: 16px 24px;
+            padding: 16px 40px 16px 24px;
             background-color: #f0f0f0;
             border-radius: 10px;
+            line-height: 140%;
         }        
+
+        & > p:last-of-type {
+            display: inline-block;
+            width: 83%;
+            margin-right: 8px;
+            line-height: 138%;
+        }
     }
 
     &-banner {
         grid-area: banner;
-        width: 460px;
+        margin-top: -27px;
         height: 920px;
         background-color: #93FF82;
         border-radius: 10px;
+        @include flex-properties(column, center, center, 0);
+        @include text-style(48px, 600, 50px, $color-black);
+
+        & > span {
+            @include text-style(24px, 600, 24px, $color-black);
+        }
     }
 
     &-gallery {
         grid-area: gallery;
-        width: 100%;
-        height: 484px;
+        height: 494px;
+        margin-bottom: 24px;
         background-color: red;
+        border-radius: 10px;
     }
     
     &-someheader-1 {
         grid-area: someheader-1;
+        margin-bottom: 24px;
         padding: 16px;
         background-color: #9c9cff;
         border-radius: 10px;
@@ -355,20 +383,35 @@ $color-black: #000000;
 
     &-sometext-2 {
         grid-area: sometext-2;
+        width: 79%;
+        margin-bottom: 21px;
+        margin-right: 10px;
+        display: inline-block;
+        justify-self: end;
+        @include text-style(18px, 500, 140%, #000000);
     }
 
+    &-sometext-3 {
+        grid-area: sometext-3;
+        width: 80%;
+        margin-bottom: 21px;
+        display: inline-block;
+        justify-self: end;
+        @include text-style(18px, 500, 140%, #000000);
+    }
 
     &-img-2 {
         grid-area: img-2;
-        width: 860px;
         height: 486px;
+        margin-bottom: 25px;
         background-color: #e3e3e3;
         border-radius: 10px;
     }
 
     &-someheader-2 {
         grid-area: someheader-2;
-        padding: 16px;
+        align-self: flex-start;
+        padding: 16px 16px 14px 16px;
         background-color: #9c9cff;
         border-radius: 10px;
         @include text-style(42px, 600, 110%, #ffffff);
@@ -376,6 +419,7 @@ $color-black: #000000;
 
     &-review {
         grid-area: review;
+        margin-bottom: 24px;
         padding: 16px 16px 32px 16px;
         background-color: #000000;
         border-radius: 10px;
@@ -387,7 +431,8 @@ $color-black: #000000;
         
         &-header {
             grid-area: 1/1/2/3;
-            margin-bottom: 24px;
+            padding-bottom: 5px;
+            margin-bottom: 19px;
             border-bottom: 1px solid #ffffff;
             @include text-style(24px, 800, 110%, #ffffff);            
         }
@@ -406,21 +451,356 @@ $color-black: #000000;
         }
 
         &-text {
+            width: 91%;
             @include text-style(18px, 500, 140%, #ffffff);
         }
     }
 
-    &-sometext-3 {
-        grid-area: sometext-3;
+    &-sometext-4 {
+        grid-area: sometext-4;
+        width: 80%;
+        display: inline-block;
+        justify-self: end;
+        @include text-style(18px, 500, 139%, #000000);
     }
 
     &-bug {
         grid-area: bug;
+        align-self: flex-end;
+        padding: 12px 15px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        @include text-style(20px, 700, 140%, #000000);
+
+        & > span {
+            padding: 0 3px;
+            background-color: #9c9cff;
+            border-radius: 6px;
+            color: #ffffff;
+        }
+    }
+}
+
+
+// SECTION #2. TAGS
+.second-section {
+    width: $main-width;
+    margin: 0 auto 40px auto;
+
+    &-tags {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 16px;
+
+        & > a {
+            text-decoration: none;
+            text-align: center;
+            justify-self: stretch;
+            padding: 11px 0;
+            background-color: #ffffff;
+            border: 2px solid #808080;
+            border-radius: 10px;
+            @include text-style(20px, 400, 110%, #808080);
+        }
+    }
+}
+
+
+// SECTION #3
+.third-section {
+    width: $main-width;
+    margin: 0 auto;
+    // @include flex-properties(row, flex-start, space-between, 0);
+    // flex-wrap: wrap;
+    display:grid;
+    grid-template-columns: 2.03fr 1fr;
+    grid-template-rows: repeat(3, max-content);
+    gap: 16px;
+
+    &-header {
+        grid-area: 1/1/2/3;
+        @include text-style(24px, 800, 110%, #000000);
     }
 
+    &-main {        
+        @include flex-properties(column, center, center, 8px);        
+
+        &-anyblock {
+            width: 100%;
+            @include flex-properties(row, stretch, space-between, 0);                
+                
+                &-content {
+                    width: 49.36%;
+                    padding: 16px;
+                    background-color: $color-white;
+                    border-radius: 10px;
+
+                    &-header {
+                        width: 91.6%;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 4;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        @include text-style(36px, 800, 110%, $color-black);
+                    }
+
+                    &-text {
+                        margin: 50px 0 17px 0;
+                        @include text-style(18px, 500, 120%, $color-black);
+                        letter-spacing: -0.019em;
+                    }
+                    
+                    &-datetext {
+                        @include text-style(12px, 400, 140%, $color-white);
+                        @include flex-properties(row, center, initial, 0);
+                        filter: invert(1);
+                    }
+                }
+
+                &-img {
+                    width: 50.65%;
+                    height: 360px;
+                    background-color: #FFC7F3;
+                    border-radius: 10px;
+                }
+        }
+    }
+
+    &-advertisement {
+        width: 460px;
+        height: 920px;
+        background-color: #93FF82;
+        border-radius: 10px;
+        text-align: center;
+        @include flex-properties(column, center, center, 0);
+        @include text-style(48px, 600, 50px, #000000);
+
+        & > span {
+            @include text-style(25px, 600, 24px, #000000);
+        }
+    }
+
+    .more-result {
+        width: 100%;
+        grid-area: 3/1/4/3;
+        margin: 6px auto 26px auto;
+        background-color: #000000;
+        border-radius: 10px;
+        @include flex-properties(row, center, center, 0);
+    
+        & > a {
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            text-align: center;
+            padding: 52px 0;
+            @include text-style(36px, 600, 100%, #ffffff);
+        }
+    }
+}
 
 
+// FOOTER
+// FOOTER. SECTION #1
+.footer {
+    width: $main-width;
+    margin: auto;
+}
+
+.mailing-content {
+    width: 100%;
+    margin-bottom: 16px;
+
+    &-header {
+        width: 100%;
+        background-color: #FFC7F3;
+        border-radius: 10px;
+        padding: 48px 0 46px 0;
+        @include flex-properties(column, center, center, 35px);
+
+        &-text {
+            text-align: center;
+            @include text-style(70px, 600, 102%, #000000);
+        }
+    }
+
+    &-form {
+        width: 100%;
+        padding: 24px;
+        background-color: #000000;
+        border-radius: 10px;
+        @include flex-properties(row, center, center, 24px);
+
+        & > input {
+            width: 60%;
+            height: 140px;
+            padding: 0 32px;
+            background-color: #272727;
+            border: 0;
+            border-radius: 10px;
+            outline: none;
+            @include text-style(36px, 600, 100%, #BEBEBE);
+        }
+
+        & > button {
+            width: 38.236%;
+            height: 140px;
+            background-color: #EA2E34;
+            border: 0;
+            border-radius: 10px;
+            cursor: pointer;
+            @include text-style(36px, 600, 100%, #ffffff);
+        }
+    }
+}
 
 
+// FOOTER. SECTION #2
+.info-content {
+    width: 100%;
+    display: grid;
+    grid-template-areas: 
+            "rc-11 rc-12 rc-12 rc-12"
+            "rc-21 rc-21 rc-23 rc-24";
+    grid-template-columns: 3.11fr 3.08fr 1fr 2fr;
+    gap: 16px;
 
+    &-tagline {
+        grid-area: rc-11;
+        padding: 24px;
+        background-color: #000000; 
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        @include flex-properties(column, flex-start, center, 138px);
+
+        & > img {
+            width: 60%;
+        }
+
+        & > p {
+            padding-right: 20px;
+            @include text-style(36px, 800, 110%, #ffffff);
+        }
+    }
+
+    &-anytext {
+        grid-area: rc-12;
+        padding: 16px;
+        background-color: #000000;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        
+        & > h1 {
+            @include text-style(36px, 800, 110%, #ffffff);
+        }
+
+        & > button {
+            width: 320px;
+            height: 48px;
+            background-color: #FFCB45;
+            border: 0;
+            border-radius: 10px;
+            justify-self: end;
+            cursor: pointer;
+            @include text-style(18px, 800, 110%, #000000);
+        }
+
+        & > h2 {
+            align-self: flex-end;
+            @include text-style(36px, 600, 110%, #ffffff);
+        }
+
+        & > h2:last-of-type {
+            justify-self: end;
+        }
+    }
+
+    &-feedback {
+        grid-area: rc-21;
+        padding: 16px;
+        background-color: #000000;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        @include flex-properties(column, flex-start, center, 121px);
+
+        & > h3 {
+            width: 45%;
+            @include text-style(36px, 800, 110%, #ffffff);
+        }
+
+        & > a {
+            width: 320px;
+            height: 48px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            text-decoration: none;
+            align-self: flex-end;
+            @include text-style(18px, 800, 110%, #000000);
+            @include flex-properties(row, center, center, 0);
+        }
+    }
+
+    &-agreement {
+        grid-area: rc-23;
+        background-color: #000000;
+        box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        text-align: center;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        @include text-style(28px, 600, 100%, #ffffff);
+        @include flex-properties(row, center, center, 0);
+    }
+
+    &-soc {
+        grid-area: rc-24;
+        background-color: #ffffff;
+        border-radius: 10px;
+        position: relative;
+
+        & > img {
+            position: absolute;
+            cursor: pointer;
+        }
+
+        & > img:nth-of-type(1) {
+            top: 25px;
+            left: 45px;
+        }
+
+        & > img:nth-of-type(2) {
+            top: 60px;
+            right: 42px;
+        }
+
+        & > img:nth-of-type(3) {
+            top: 140px;
+            left: 65px;
+        }
+
+        & > img:nth-of-type(4) {
+            right: 63px;
+            bottom: 123px;
+        }
+
+        & > img:nth-of-type(5) {
+            left: 92px;
+            bottom: 23px;
+        }
+    }
+}
+
+
+// FOOTER. SECTION #3
+.big-footer-logo {
+    margin-top: 60px;
+
+    & > img {
+        width: 100%;
+    }
+       
 }
