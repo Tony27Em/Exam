@@ -61,15 +61,25 @@
                     </div>
                 </div>
                 <div class="requests">
-                    <div><a href="#">STEPPE TAG</a></div>
-                    <div><a href="#">STEPPE TAG</a></div>
-                    <div><a href="#">STEPPE TAG</a></div>
-                    <div><a href="#">STEPPE TAG</a></div>
-                    <div><a href="#">STEPPE TAG</a></div>
-                    <div><a href="#">STEPPE TAG</a></div>
-                    <div><a href="#">STEPPE TAG</a></div>
+                    <input type="radio" name="tags-scroll" id="left" checked>
+                    <input type="radio" name="tags-scroll" id="right">
+                    <label class="requests-arrow requests-arrow-left" for="left"></label>
+                    <label class="requests-arrow requests-arrow-right" for="right"></label>
+                    <label class="requests-blur requests-blur-left" for="left"></label>
+                    <label class="requests-blur requests-blur-right" for="right"></label>
+                    <div class="requests-tag">
+                        <div><a href="#">STEPPE TAG</a></div>
+                        <div><a href="#">STEPPE TAG</a></div>
+                        <div><a href="#">STEPPE TAG</a></div>
+                        <div><a href="#">STEPPE TAG</a></div>
+                        <div><a href="#">STEPPE TAG</a></div>
+                        <div><a href="#">STEPPE TAG</a></div>
+                        <div><a href="#">STEPPE TAG</a></div>
+                        <div><a href="#">STEPPE TAG</a></div>
+                        <div><a href="#">STEPPE TAG</a></div>
+                    </div>
                 </div>
-                <input type="checkbox" name="theme-color" id="theme-color">
+                <input type="checkbox" name="theme-color" id="theme-color" onchange="changeTheme(this.checked)">
                 <label class="change-theme-color" for="theme-color">
                     <span class="circle"></span>
                 </label>                
@@ -162,7 +172,24 @@
                 </div>
 
                 <!-- #7 -->
-                <div class="first-section-gallery"></div>
+                <div class="first-section-gallery">
+                    <input type="radio" name="arrow" id="img-3">
+                    <input type="radio" name="arrow" id="img-2">
+                    <input type="radio" name="arrow" id="img-1" checked>
+                    <label class="arrow arrow-3" for="img-3"></label>
+                    <label class="arrow arrow-2" for="img-2"></label>
+                    <label class="arrow arrow-1" for="img-1"></label>
+                    <div class="dots">
+                        <label class="dots-n dots-1" for="img-1"></label>
+                        <label class="dots-n dots-2" for="img-2"></label>
+                        <label class="dots-n dots-3" for="img-3"></label>
+                    </div>
+                    <div class="first-section-gallery-img">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
 
                 <!-- #8 -->
                 <div class="first-section-banner">
@@ -383,6 +410,17 @@
                 <img src="images/big-logo-footer-mobile.svg" alt="#">
             </section>
         </footer>
+
+        <!-- Смена цветовой темы -->
+        <script>
+            function changeTheme(isChecked) {
+              if (isChecked) {
+                document.body.setAttribute('dark', '');
+              } else {
+                document.body.removeAttribute('dark');
+              }
+            }
+        </script>
     </div>
 
 </body>

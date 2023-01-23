@@ -14,6 +14,26 @@
 
     <div class="container">
 
+        <!-- FIXED MOBILE MENU -->
+        <div class="mobile-menu">
+            <p>
+                <img src="images/menu-icon-1.svg" alt="#">
+                <a href="#">STEPPE</a>
+            </p>
+            <p>
+                <img src="images/menu-icon-2.svg" alt="#">
+                <a href="#">Поиск</a>
+            </p>
+            <p>
+                <img src="images/menu-icon-3.svg" alt="#">
+                <a href="#">В тренде</a>
+            </p>
+            <p>
+                <img src="images/menu-icon-4.svg" alt="#">
+                <a href="#">Настройки</a>
+            </p>
+        </div>
+
         <!-- HEADER/NAV -->
         <header class="header">
             <div class="header-banner">
@@ -21,29 +41,33 @@
             </div>
 
             <nav class="nav">
-                <div class="nav-line-1">
-                    <img src="images/LOGOTYPE.svg" alt="#">
-                    <input type="search" name="search-panel" id="search-panel">
-                    <div class="select">      
-                        <p class="select-header">Соцсети</p>                 
-                        <div class="select-options">
-                            <a href="#">Option 1</a>
-                            <a href="#">Option 2</a>
-                            <a href="#">Option 3</a>
-                        </div>
-                    </div>
-                    <div class="select">      
-                        <p class="select-header">Steppe Rus</p>                 
-                        <div class="select-options">
-                            <a href="#">Option 1</a>
-                            <a href="#">Option 2</a>
-                            <a href="#">Option 3</a>
-                        </div>
+                <img class="logo" src="images/LOGOTYPE.svg" alt="#">
+                <input type="search" name="search-panel" id="search-panel" placeholder="Найти">
+                <p class="settings">Настройки</p>
+                <div class="select select-1">      
+                    <p class="select-header">Соцсети</p>                 
+                    <div class="select-options">
+                        <a href="#">Option 1</a>
+                        <a href="#">Option 2</a>
+                        <a href="#">Option 3</a>
                     </div>
                 </div>
-
-                <div class="nav-line-2">
-                    <div class="requests">
+                <div class="select select-2">      
+                    <p class="select-header">Steppe Rus</p>                 
+                    <div class="select-options">
+                        <a href="#">Option 1</a>
+                        <a href="#">Option 2</a>
+                        <a href="#">Option 3</a>
+                    </div>
+                </div>
+                <div class="requests">
+                    <input type="radio" name="tags-scroll" id="left" checked>
+                    <input type="radio" name="tags-scroll" id="right">
+                    <label class="requests-arrow requests-arrow-left" for="left"></label>
+                    <label class="requests-arrow requests-arrow-right" for="right"></label>
+                    <label class="requests-blur requests-blur-left" for="left"></label>
+                    <label class="requests-blur requests-blur-right" for="right"></label>
+                    <div class="requests-tag">
                         <div><a href="#">Сейчас читают</a></div>
                         <div><a href="#">STEPPE AWARDS</a></div>
                         <div><a href="#">#Elon Musk</a></div>
@@ -51,13 +75,14 @@
                         <div><a href="#">Токаев</a></div>
                         <div><a href="#">Астана</a></div>
                         <div><a href="#">Twitter</a></div>
-                        <div><a href="#">Ninety One</a></div> 
+                        <div><a href="#">Ninety One</a></div>
+                        <div><a href="#">IT STEP</a></div>
                     </div>
-                    <input type="checkbox" name="theme-color" id="theme-color">
-                    <label class="change-theme-color" for="theme-color">
-                        <span class="circle"></span>
-                    </label>
                 </div>
+                <input type="checkbox" name="theme-color" id="theme-color" onchange="changeTheme(this.checked)">
+                <label class="change-theme-color" for="theme-color">
+                    <span class="circle"></span>
+                </label>                
             </nav>
         </header>
         <!--  -->
@@ -408,7 +433,7 @@
             </section>
 
             <!-- SECTION #6 (same SECTION #3 except last extra block. If necessary change 'third' to 'sixth') -->
-            <section class="third-section">
+            <section class="third-section sixth-section">
                 <div class="third-section-main sixth-section-main">
                     <div class="third-section-main-anyblock">
                         <div class="third-section-main-anyblock-content">
@@ -530,7 +555,7 @@
                     <h2>H2 Extra Bold - 36</h2>
                 </div>
                 <div class="info-content-feedback">
-                    <h3>Идеи для материалов, вопросы, предложения и жалобы</h3>
+                    <h3>Идеи для материалов, вопросы, предложения <br> и <br> жалобы</h3>
                     <a href="#">info@the-steppe.com</a>
                 </div>
                 <div class="info-content-agreement">Пользовательское <br> соглашение</div>
@@ -549,6 +574,17 @@
                 <img src="images/big-logo-footer-mobile.svg" alt="#">
             </section>
         </footer>
+
+        <!-- Смена цветовой темы -->
+        <script>
+            function changeTheme(isChecked) {
+              if (isChecked) {
+                document.body.setAttribute('dark', '');
+              } else {
+                document.body.removeAttribute('dark');
+              }
+            }
+        </script>
 
     </div>
 </body>
